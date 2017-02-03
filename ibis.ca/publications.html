@@ -66,6 +66,63 @@
 
         <!-- RSS Feed -->
         <div class="rss-widget">
+        <h5>
+Development of cortical shape in the human brain from 6 to 24months of age via a novel measure of shape complexity. 2016-05  </h5>
+<a href="http://europepmc.org/abstract/med/27150231">
+DOI: 10.1016/j.neuroimage.2016.04.053 PMID: 27150231</a>
+<h5>
+Splenium development and early spoken language in human infants. 2015-10  </h5>
+<a href="http://europepmc.org/abstract/med/26490257">
+PMID: 26490257</a>
+<h5>
+Altered corpus callosum morphology associated with autism over the first 2 years of life. 2015-07 </h5>
+<a href="http://europepmc.org/abstract/med/25937563">
+DOI: 10.1093/brain/awv118 PMID: 25937563</a>
+<h5>
+Accurate age classification of 6 and 12 month-old infants based on resting-state functional connectivity magnetic resonance imaging data. 2015-04  </h5>
+<a href="http://europepmc.org/abstract/med/25704288">
+DOI: 10.1016/j.dcn.2015.01.003 PMC: PMC4385423 PMID: 25704288</a>
+<h5>
+Behavioral, cognitive, and adaptive development in infants with autism spectrum disorder in the first 2 years of life. 2015  </h5>
+<a href="http://europepmc.org/abstract/med/26203305">
+DOI: 10.1186/s11689-015-9117-6 PMC: PMC4511527 PMID: 26203305</a>
+<h5>
+Shape index distribution based local surface complexity applied to the human cortex. 2015 </h5>
+<a href="http://europepmc.org/abstract/med/26028803">
+DOI: 10.1117/12.2081560 PMC: PMC4449152 PMID: 26028803</a>
+<h5>
+Longitudinal patterns of repetitive behavior in toddlers with autism. 2014-08  </h5>
+<a href="http://europepmc.org/abstract/med/24552513">
+DOI: 10.1111/jcpp.12207 PMC: PMC4107191 PMID: 24552513</a>
+<h5>
+Diffusion imaging quality control via entropy of principal direction distribution. 2013-11  </h5>
+<a href="http://europepmc.org/abstract/med/23684874">
+DOI: 10.1016/j.neuroimage.2013.05.022 PMC: PMC3798052 PMID: 23684874</a>
+<h5>
+White matter microstructure and atypical visual orienting in 7-month-olds at risk for autism. 2013-08  </h5>
+<a href="http://europepmc.org/abstract/med/23511344">
+DOI: 10.1176/appi.ajp.2012.12091150 PMC: PMC3863364 PMID: 23511344</a>
+<h5>
+Frontolimbic neural circuitry at 6 months predicts individual differences in joint attention at 9 months. 2013-03  </h5>
+<a href="http://europepmc.org/abstract/med/23432829">
+DOI: 10.1111/desc.12015 PMC: PMC3582040 PMID: 23432829</a>
+<h5>
+Adaptive prior probability and spatial temporal intensity change estimation for segmentation of the one-year-old human brain. 2013-01  </h5>
+<a href="http://europepmc.org/abstract/med/23032117">
+DOI: 10.1016/j.jneumeth.2012.09.018 PMC: PMC3513941 PMID: 23032117</a>
+<h5>
+Brain volume findings in 6-month-old infants at high familial risk for autism. 2012-06  </h5>
+<a href="http://europepmc.org/abstract/med/22684595">
+DOI: 10.1176/appi.ajp.2012.11091425 PMC: PMC3744332 PMID: 22684595</a>
+<h5>
+Differences in white matter fiber tract development present from 6 to 24 months in infants with autism. 2012-06  </h5>
+<a href="http://europepmc.org/abstract/med/22362397">
+DOI: 10.1176/appi.ajp.2011.11091447 PMC: PMC3377782 PMID: 22362397</a>
+<h5>
+Analysis of longitudinal shape variability via subject specific growth modeling. 2012  </h5>
+<a href="http://europepmc.org/abstract/med/23285617">
+PMC: PMC3744241 PMID: 23285617</a>
+
             <ul></ul>
         </div>
 
@@ -123,64 +180,16 @@
 
 <!-- RSS -->
 <script>
-    function RSSWidget(url) {
 
-        rss = this;
-        rss.FEED_URL = url;
+$(function () {
 
-        rss.JSON = new Array(); //create a new array
-        rss.widgetHolder = $('.rss-widget ul');
-        rss.storiesLimit = 25;
-
-        $.ajax({
-            url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(rss.FEED_URL),
-            dataType: 'json',
-            success: function (data) {
-                if (data.responseData.feed && data.responseData.feed.entries) {
-                    $.each(data.responseData.feed.entries, function (i, e) {
-
-                        rss.JSON.push({ //add objects to the array
-                            title: e.title,
-                            author: e.author,
-                            content: e.content || "",
-                            link: e.link
-                        });
-                    });
-
-                    if (rss.storiesLimit > rss.JSON.length)
-                        rss.storiesLimit = rss.JSON.length;
-
-                    for (var i = 0; i < rss.storiesLimit; i++) {
-                        rss.renderBlogItem(rss.JSON[i]);
-                    }
-
-                    $('.blog-item').on("click", function () {
-                        $(this).find('.blog-item-content').toggleClass('hide');
-                        $(this).find('.blog-item-title').toggleClass('hide');
-                        $(this).find('.blog-item-author').toggleClass('hide');
-                    });
-
-                }
-            }
-        });
-
-        rss.renderBlogItem = function (object) {
-            var item = '<li class="blog-item">';
-
-            item += '<div class="blog-item-title">' + object.title + '</div>';
-            item += '<div class="blog-item-author">' + object.author + '</div>';
-            item += '<div class="blog-item-content hide">' + object.content +
-                    '<p><a class="btn btn-default btn-light" href="' + object.link + '" role="button">Read more</a></p></div>';
-            item += '</li>';
-
-            rss.widgetHolder.append(item);
-        }
-    }
-
-    (function ($) {
-        // RSS Link
-        RSSWidget("https://www.ncbi.nlm.nih.gov/entrez/eutils/erss.cgi?rss_guid=1nwkqzEtY5uZ6cp4_0V_8_XGxpSZeTeez5rXQ_rVGZ2J4YJgYA");
-    })(jQuery);
+    //$.getJSON("https://www.impactstory.org/api/person/0000-0002-4932-4693", function(result){
+    //    $.each(result, function(i, field){
+    //        $(".rss-widget").append(field + " ");
+    //    });
+    //});
+    
+});
 
 </script>
 
