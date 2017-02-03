@@ -133,7 +133,7 @@
         rss.storiesLimit = 25;
 
         $.ajax({
-            url: 'http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(rss.FEED_URL),
+            url: 'https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(rss.FEED_URL),
             dataType: 'json',
             success: function (data) {
                 if (data.responseData.feed && data.responseData.feed.entries) {
